@@ -1,5 +1,5 @@
-{% extends 'base.html' %} <!--base.html 템플릿을 상속-->
-{% load pybo_filter %}<!--템플릿 필터함수를 저장한 파일(pybo_filter.py) 로드(템플릿 상단에 extends 문이 있을 경우 load문은 extends 문 다음에 위치)-->
+{% extends 'free.html' %} <!--base.html 템플릿을 상속-->
+{% load pybo_filter %} <!--템플릿 필터함수를 저장한 파일(free_filter.py) 로드(템플릿 상단에 extends 문이 있을 경우 load문은 extends 문 다음에 위치)-->
 {% block content %} <!--question_list.html에서만 쓰이는 내용을 작성-->
 
 <div class="container my-3">
@@ -23,7 +23,7 @@
         <tr class="text-center thead-dark">
             <th>번호</th>
             <th>추천</th>
-            <th style="width:35%">제목</th>
+            <th style="width:40%">제목</th>
             <th>글쓴이</th>
             <th>작성일시</th>
         </tr>
@@ -38,22 +38,22 @@
             </td>
             <td>
             {% if question.voter.all.count > 0 %}
-            <span class="badge badge-warning px-2 py-1">{{ question.voter.all.count }}</span>
+            <span class="badge badge-warning px-2 py-1">{{ question.voter_free.all.count }}</span>
             {% endif %}
             </td>
             <td class="text-left">
-                <a href="{% url 'pybo:detail' question.id %}">{{ question.subject }}</a>
+                <a href="{% url 'free:detail' question.id %}">{{ question.subject_free }}</a>
                 {% if question.answer_set.count > 0 %}
                 <span class="text-danger small ml-2">{{ question.answer_set.count }}</span>
                 {% endif %}
             </td>
-            <td>{{ question.author.username }}</td>  <!-- 글쓴이 추가 -->
-            <td>{{ question.create_date }}</td>
+            <td>{{ question.author_free.username }}</td>  <!-- 글쓴이 추가 -->
+            <td>{{ question.create_date_free }}</td>
         </tr>
         {% endfor %}
         {% else %}
         <tr>
-            <td colspan="3">질문이 없습니다.</td>
+            <td colspan="3">글이 없습니다.</td>
         </tr>
         {% endif %}
         </tbody>
@@ -100,7 +100,7 @@
     </ul>
     <!-- 페이징처리 끝 -->
 
-    <a href="{% url 'pybo:question_create' %}" class="btn btn-primary">질문 등록하기</a>
+    <a href="{% url 'free:question_create' %}" class="btn btn-primary">글 등록하기</a>
 </div>
 
 <form id="searchForm" method="get" action="{% url 'index' %}">
