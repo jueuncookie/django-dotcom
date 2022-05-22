@@ -19,15 +19,3 @@ def signup(request):
     else:
         form = UserForm()
     return render(request, 'common/signup.html', {'form': form})
-
-def double(request):
-    return render(request, 'common/doubleboard.html')
-
-def minor(request):
-    return render(request, 'common/minorboard.html')
-
-def free(request):
-    return render(request, 'common/free.html')
-
-def information(request):
-    return render(request, 'common/information.html')

@@ -33,6 +33,10 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'common.apps.CommonConfig', #로그인, 로그아웃 처리 앱 등록
     'pybo.apps.PyboConfig', #DB작업 위해 추가 필수, 앱 적용시 migration이 필요한 경우는 데이터베이스가 필요한 경우
+    'doubleboard.apps.DoubleboardConfig',
+    'minorboard.apps.MinorboardConfig',
+    'information.apps.InformationConfig',
+    'free.apps.FreeConfig',
     'django.contrib.admin',
     'django.contrib.auth', #장고의 로그인, 로그아웃 + 계정생성을 도와주는 앱
     'django.contrib.contenttypes',

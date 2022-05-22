@@ -21,5 +21,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('pybo/', include('pybo.urls')), #추가 항상 pybo/처럼 끝에 슬래시 붙여주기.
     path('common/', include('common.urls')),#http://localhost:8000/common/ 으로 시작하는 URL은 common/urls.py를 참조
+    path('doubleboard/', include('doubleboard.urls')),
+    path('minorboard/', include('minorboard.urls')),
+    path('information/', include('information.urls')),
+    path('free/', include('free.urls')),
     path('', base_views.index, name='index'),  # '/' 에 해당되는 path
 ]
